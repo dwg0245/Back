@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.example.back02.model.Board;
 import org.example.back02.model.BoardDto;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +34,7 @@ public class BoardService {
         return boardLists;
     }
 
+    // 게시글 상세 조회
     public BoardDto.BoardList findByIdx(Long idx) {
         Optional<Board> result = boardRepository.findById(idx);
 
@@ -40,5 +43,18 @@ public class BoardService {
             return BoardDto.BoardList.from(dto);
         }
         return null;
+    }
+
+    // 게시글 업데이트
+
+    public void boardUpdate(Long idx,BoardDto.BoardUpdate dto) {
+        Optional<Board> result = boardRepository.findById(idx);
+
+        Board resultData = result.get();
+
+        resultData.setTitle(dto.getTitle());
+        resultData.setContents(dto.getContents());
+
+        boardRepository.save(resultData);
     }
 }

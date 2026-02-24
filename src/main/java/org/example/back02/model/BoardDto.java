@@ -42,4 +42,15 @@ public class BoardDto {
                     .build();
         }
     }
+
+    // 게시글 작성
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    @Getter
+    public static class BoardUpdate{
+        private Long idx;
+        private String title;
+        private String contents;
+    }
 }

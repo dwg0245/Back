@@ -32,15 +32,23 @@ public class BoardController {
     // 게시글 목록 조회
     @PostMapping("/list")
     public ResponseEntity findlist(){
-        List<BoardDto.BoardList>  result =  boardService.findAll();
+        List<BoardDto.BoardList> result =  boardService.findAll();
 
         return ResponseEntity.ok(result);
     }
 
+    // 게시글 상세 조회
     @GetMapping("/desc/{idx}")
     public ResponseEntity findByIdx(@PathVariable Long idx){
         BoardDto.BoardList result = boardService.findByIdx(idx);
 
         return ResponseEntity.ok(result);
+    }
+
+    // 게시글 수정
+    @PutMapping("/update/{idx}")
+    public ResponseEntity update(@PathVariable Long idx ,@RequestBody BoardDto.BoardUpdate dto){
+        boardService.boardUpdate(idx, dto);
+        return ResponseEntity.ok("성공");
     }
 }
