@@ -22,6 +22,7 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
+    // 게시글 저장
     @PostMapping("/save")
     public ResponseEntity save(@RequestBody BoardDto.Boardreq dto){
         boardService.save(dto);
@@ -29,9 +30,16 @@ public class BoardController {
     }
 
     // 게시글 목록 조회
-    @GetMapping("/list")
+    @PostMapping("/list")
     public ResponseEntity findlist(){
         List<BoardDto.BoardList>  result =  boardService.findAll();
+
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/desc/{idx}")
+    public ResponseEntity findByIdx(@PathVariable Long idx){
+        BoardDto.BoardList result = boardService.findByIdx(idx);
 
         return ResponseEntity.ok(result);
     }

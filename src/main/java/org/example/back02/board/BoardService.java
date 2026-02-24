@@ -6,6 +6,7 @@ import org.example.back02.model.BoardDto;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -13,6 +14,8 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+
+    // 게시글 저장
     public void save(BoardDto.Boardreq dto) {
         boardRepository.save(dto.toEntity());
     }
@@ -27,5 +30,15 @@ public class BoardService {
         }
 
         return boardLists;
+    }
+
+    public BoardDto.BoardList findByIdx(Long idx) {
+        Optional<Board> result = boardRepository.findById(idx);
+
+        if(result.isPresent()){
+            Board dto = result.get();
+            return BoardDto.BoardList.from(dto);
+        }
+        return null;
     }
 }
