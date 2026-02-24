@@ -18,6 +18,6 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
-    private String tilte;
+    private String title;
     private String contents;
 }

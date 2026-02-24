@@ -18,7 +18,7 @@ public class BoardDto {
 
         public Board toEntity(){
             return Board.builder()
-                    .tilte(this.title)
+                    .title(this.title)
                     .contents(this.contents)
                     .build();
         }
