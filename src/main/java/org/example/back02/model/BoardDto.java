@@ -23,4 +23,22 @@ public class BoardDto {
                     .build();
         }
     }
+
+    // 게시글 목록 조회
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class BoardList{
+        private Long idx;
+        private String title;
+        private String contents;
+
+        public static BoardList from(Board entity){
+            return BoardList.builder()
+                    .idx(entity.getIdx())
+                    .title(entity.getTitle())
+                    .contents(entity.getContents())
+                    .build();
+        }
+    }
 }

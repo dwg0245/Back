@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.back02.model.BoardDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 // 각각 컨트롤러 마다 작성을 해야 한다.
 // 각각 사이트마다 설정을 해줄 수 있다.
@@ -25,4 +28,11 @@ public class BoardController {
         return ResponseEntity.ok("성공");
     }
 
+    // 게시글 목록 조회
+    @PostMapping("/list")
+    public ResponseEntity findlist(){
+        List<BoardDto.BoardList>  result =  boardService.findAll();
+
+        return ResponseEntity.ok(result);
+    }
 }
