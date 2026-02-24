@@ -51,4 +51,10 @@ public class BoardController {
         boardService.boardUpdate(idx, dto);
         return ResponseEntity.ok("성공");
     }
+
+    @DeleteMapping("/delete/{idx}")
+    public ResponseEntity delete(@PathVariable Long idx){
+        boardService.deleteById(idx);
+        return ResponseEntity.ok("성공");
+    }
 }

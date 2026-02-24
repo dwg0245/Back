@@ -46,7 +46,6 @@ public class BoardService {
     }
 
     // 게시글 업데이트
-
     public void boardUpdate(Long idx,BoardDto.BoardUpdate dto) {
         Optional<Board> result = boardRepository.findById(idx);
 
@@ -56,5 +55,10 @@ public class BoardService {
         resultData.setContents(dto.getContents());
 
         boardRepository.save(resultData);
+    }
+
+    // 게시글 삭제
+    public void deleteById(Long idx){
+        boardRepository.deleteById(idx);
     }
 }
