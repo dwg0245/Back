@@ -28,6 +28,7 @@ public class BoardDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @Getter
     public static class BoardList{
         private Long idx;
         private String title;

@@ -29,7 +29,7 @@ public class BoardController {
     }
 
     // 게시글 목록 조회
-    @PostMapping("/list")
+    @GetMapping("/list")
     public ResponseEntity findlist(){
         List<BoardDto.BoardList>  result =  boardService.findAll();
 
